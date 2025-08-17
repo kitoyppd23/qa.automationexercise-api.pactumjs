@@ -1,8 +1,7 @@
-# 🚀 QA Automation Exercise - ServeRest API
+
 
 Projeto de automação de testes de API para a plataforma [ServeRest](https://serverest.dev) utilizando PactumJS e Jest.
 
-## 📋 Sobre o Projeto
 
 Este projeto implementa testes automatizados para a API ServeRest, cobrindo funcionalidades de **usuários** e **produtos**. Os testes seguem o padrão **Triple A (Arrange, Act, Assert)** e incluem cenários de sucesso, negativos e validação de contratos.
 
