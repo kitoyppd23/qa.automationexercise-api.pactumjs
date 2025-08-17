@@ -1,20 +1,69 @@
 {
   "name": "qa.automationexercise-api.pactumjs",
   "version": "1.0.0",
-  "description": "",
+  "description": "Automação de testes de API para ServeRest usando PactumJS",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:verbose": "jest --verbose",
+    "report": "jest --reporters=default --reporters=jest-html-reporters",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+    "format": "prettier --write src/",
+    "validate": "npm run lint && npm run test"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kitoyppd23/qa.automationexercise-api.pactumjs.git"
   },
-  "keywords": [],
+  "keywords": [
+    "api-testing",
+    "automation",
+    "pactumjs",
+    "quality-assurance",
+    "serverest"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/kitoyppd23/qa.automationexercise-api.pactumjs/issues"
   },
-  "homepage": "https://github.com/kitoyppd23/qa.automationexercise-api.pactumjs#readme"
+  "homepage": "https://github.com/kitoyppd23/qa.automationexercise-api.pactumjs#readme",
+  "dependencies": {
+    "pactum": "^3.3.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-html-reporters": "^3.1.7",
+    "eslint": "^8.55.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "prettier": "^3.1.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testMatch": [
+      "**/src/tests/**/*.test.js"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/jest.setup.js"
+    ],
+    "verbose": true,
+    "silent": false,
+    "reporters": [
+      "default",
+      [
+        "jest-html-reporters",
+        {
+          "publicPath": "./reports",
+          "filename": "report.html",
+          "expand": true
+        }
+      ]
+    ]
+  }
 }
