@@ -1,6 +1,9 @@
 /**
  * Classe Base para Page Objects
  * Fornece métodos comuns para todas as páginas de API
+ * 
+ * @version 1.0.0
+ * @author Caue
  */
 const { spec } = require('pactum');
 
