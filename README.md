@@ -2,7 +2,7 @@
 
 ## 📋 Descrição
 
-Projeto de automação de testes de API para o **ServeRest** utilizando **PactumJS** com foco em **Contract Testing** e validação de schemas.
+Projeto de automação de testes de API utilizando **PactumJS** com foco em  e validação de schemas.
 
 ## 🏗️ Arquitetura
 
