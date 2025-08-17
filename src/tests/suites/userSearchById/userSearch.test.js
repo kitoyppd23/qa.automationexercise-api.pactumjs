@@ -62,6 +62,14 @@ describe('Testes de Busca de Usuário por ID - ServeRest API', () => {
     // ARRANGE - ID de um usuário conhecido
     const userId = '0PrFpvsz3h3S82RH'; // ID do exemplo que você mostrou
 
+    console.log('📤 REQUEST:', {
+      method: 'GET',
+      url: `https://serverest.dev/usuarios/${userId}`,
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+
     // ACT - Busca o usuário específico
     const response = await spec()
       .get(`https://serverest.dev/usuarios/${userId}`)
@@ -69,6 +77,12 @@ describe('Testes de Busca de Usuário por ID - ServeRest API', () => {
         'Accept': 'application/json'
       })
       .expectStatus(200);
+
+    console.log('📥 RESPONSE:', {
+      status: response.statusCode,
+      headers: response.headers,
+      body: response.body
+    });
 
     // ASSERT - Valida a estrutura e dados específicos
     expect(response.body).toMatchObject({
@@ -90,13 +104,27 @@ describe('Testes de Busca de Usuário por ID - ServeRest API', () => {
     // ARRANGE - ID inválido
     const invalidUserId = 'ID_INVALIDO_123';
 
+    console.log('📤 REQUEST:', {
+      method: 'GET',
+      url: `https://serverest.dev/usuarios/${invalidUserId}`,
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+
     // ACT & ASSERT - Deve retornar erro
-    await spec()
+    const response = await spec()
       .get(`https://serverest.dev/usuarios/${invalidUserId}`)
       .withHeaders({
         'Accept': 'application/json'
       })
       .expectStatus(400);
+
+    console.log('📥 RESPONSE:', {
+      status: response.statusCode,
+      headers: response.headers,
+      body: response.body
+    });
   });
 
   // ===== TESTES DE CONTRATO =====

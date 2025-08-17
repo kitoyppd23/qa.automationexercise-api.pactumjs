@@ -1,158 +1,233 @@
-# Automação de Testes de API - ServeRest com PactumJS
+# 🚀 QA Automation Exercise - ServeRest API
 
-## 📋 Descrição
+Projeto de automação de testes de API para a plataforma [ServeRest](https://serverest.dev) utilizando PactumJS e Jest.
 
-Projeto de automação de testes de API para o **ServeRest** utilizando **PactumJS** com foco em **Contract Testing** e validação de schemas.
+## 📋 Sobre o Projeto
 
-## 🏗️ Arquitetura
+Este projeto implementa testes automatizados para a API ServeRest, cobrindo funcionalidades de **usuários** e **produtos**. Os testes seguem o padrão **Triple A (Arrange, Act, Assert)** e incluem cenários de sucesso, negativos e validação de contratos.
 
-### Padrões de Projeto Implementados
+### 🎯 Funcionalidades Testadas
 
-- **Builder Pattern**: Para construção de payloads de teste
-- **Strategy Pattern**: Para diferentes tipos de validação
-- **Singleton Pattern**: Para configuração de ambiente
-- **API Object Model**: Para encapsulamento das operações de API
+#### 👤 **Usuários (`/usuarios`)**
+- ✅ **POST /login** - Autenticação de usuário
+- ✅ **GET /usuarios** - Listagem de todos os usuários
+- ✅ **POST /usuarios** - Criação de novo usuário
+- ✅ **GET /usuarios/{_id}** - Busca de usuário por ID
+- ✅ **DELETE /usuarios/{_id}** - Exclusão de usuário por ID
+- ✅ **PUT /usuarios/{_id}** - Atualização de usuário por ID
 
-### Estrutura do Projeto
+#### 📦 **Produtos (`/produtos`)**
+- ✅ **GET /produtos** - Listagem de todos os produtos
+- ✅ **POST /produtos** - Criação de novo produto (requer autenticação)
+- ✅ **GET /produtos/{_id}** - Busca de produto por ID
+- ✅ **DELETE /produtos/{_id}** - Exclusão de produto por ID (requer autenticação)
+- ✅ **PUT /produtos/{_id}** - Atualização de produto por ID (requer autenticação)
 
-```
-src/
-├── config/           # Configurações e ambiente
-├── models/           # Modelos de dados (Builders)
-├── schemas/          # Schemas para validação
-├── services/         # Serviços de API (API Objects)
-├── tests/            # Casos de teste organizados
-└── utils/            # Utilitários e helpers
-```
+## 🛠️ Tecnologias Utilizadas
 
-## 🚀 Funcionalidades
+- **Node.js** - Runtime JavaScript
+- **PactumJS** - Framework de testes de API
+- **Jest** - Test runner e framework de asserções
+- **Jest HTML Reporters** - Geração de relatórios HTML
 
-### ✅ Implementado
+## 📦 Pré-requisitos
 
-- **Login com Sucesso**: Teste completo do endpoint `POST /login`
-- **Contract Testing**: Validação de schemas
-- **Testes Negativos**: Cenários de erro e validação
-- **Performance Testing**: Validação de tempo de resposta
-- **Header Validation**: Validação de headers de request/response
-- **Token JWT Validation**: Validação de estrutura do token
-- **Retry Mechanism**: Suporte a retry automático
+- Node.js (versão 16.0.0 ou superior)
+- npm (incluído com Node.js)
 
-## 🛠️ Tecnologias
+## 🚀 Instalação
 
-- **PactumJS**: Framework de testes de API
-- **Jest**: Test runner e assertions
-- **ESLint**: Linting de código
-- **Prettier**: Formatação de código
+1. **Clone o repositório:**
+   ```bash
+   git clone https://github.com/kitoyppd23/qa.automationexercise-api.pactumjs.git
+   cd qa.automationexercise-api.pactumjs
+   ```
 
-## 📦 Instalação
+2. **Instale as dependências:**
+   ```bash
+   npm install
+   ```
 
+## 🧪 Executando os Testes
+
+### 📊 **Executar Todos os Testes**
 ```bash
-# Instalar dependências
-npm install
-
-# Configurar variáveis de ambiente
-cp env.example .env
-```
-
-## 🧪 Execução dos Testes
-
-```bash
-# Executar todos os testes
 npm test
+```
 
-# Executar testes em paralelo
+### 🔍 **Executar Testes Específicos**
+
+#### **Login**
+```bash
+npm run test:login
+```
+
+#### **Usuários**
+```bash
+# Listagem de usuários
+npm run test:user
+
+# Criação de usuário
+npm run test:user-creation
+
+# Busca de usuário por ID
+npm run test:user-search
+
+# Exclusão de usuário por ID
+npm run test:user-delete
+
+# Atualização de usuário por ID
+npm run test:user-update
+```
+
+#### **Produtos**
+```bash
+# Listagem de produtos
+npm run test:products
+
+# Criação de produto
+npm run test:product-creation
+
+# Busca de produto por ID
+npm run test:product-search
+
+# Exclusão de produto por ID
+npm run test:product-delete
+
+# Atualização de produto por ID
+npm run test:product-update
+```
+
+### 📈 **Executar com Relatório HTML**
+```bash
+npm run report
+```
+
+O relatório será gerado em: `reports/report.html`
+
+### ⚡ **Executar em Paralelo**
+```bash
 npm run test:parallel
-
-# Executar testes de contrato
-npm run test:contract
-
-# Executar testes de smoke
-npm run test:smoke
-
-# Executar testes de regressão
-npm run test:regression
-
-# Gerar relatório HTML
-npm run test:report
 ```
 
-## 📝 Casos de Teste
-
-### Login com Sucesso
-
-**Endpoint**: `POST /login`
-**Payload**:
-```json
-{
-  "email": "fulano@qa.com",
-  "password": "teste"
-}
+### 👀 **Executar em Modo Watch**
+```bash
+npm run test:watch
 ```
 
-**Response Esperado**:
-```json
-{
-  "message": "Login realizado com sucesso",
-  "authorization": "Bearer <JWT_TOKEN>"
-}
+### 📝 **Executar com Logs Verbosos**
+```bash
+npm run test:verbose
 ```
 
-### Cenários de Teste
+## 📁 Estrutura do Projeto
 
-1. **Login com Credenciais Válidas**
-   - Valida status 200
-   - Valida mensagem de sucesso
-   - Valida estrutura do token JWT
-
-2. **Contract Testing**
-   - Validação de request schema
-   - Validação de response schema
-   - Validação de headers
-
-3. **Testes Negativos**
-   - Credenciais inválidas
-   - Email inválido
-   - Senha vazia
-   - Email vazio
-
-4. **Performance Testing**
-   - Tempo de resposta
-   - Retry automático
-
-## 🔧 Configuração
-
-### Variáveis de Ambiente
-
-```env
-BASE_URL=https://serverest.dev
-TIMEOUT=30000
-RETRY_ATTEMPTS=3
-PARALLEL_EXECUTION=false
-REPORT_PATH=./reports
-LOG_LEVEL=info
-NODE_ENV=test
-MAX_RESPONSE_TIME=5000
-PERFORMANCE_THRESHOLD=3000
 ```
+qa.automationexercise-api.pactumjs/
+├── src/
+│   └── tests/
+│       └── suites/
+│           ├── login/
+│           │   └── login.test.js
+│           ├── userListing/
+│           │   └── userListing.test.js
+│           ├── criacao-usuario/
+│           │   └── userCreation.test.js
+│           ├── userSearchById/
+│           │   ├── userSearch.test.js
+│           │   ├── userDelete.test.js
+│           │   └── userUpdate.test.js
+│           └── products/
+│               ├── productListing.test.js
+│               ├── productCreation.test.js
+│               ├── productSearch.test.js
+│               ├── productDelete.test.js
+│               └── productUpdate.test.js
+├── reports/
+│   └── report.html
+├── jest.setup.js
+├── package.json
+└── README.md
+```
+
+## 🔧 Configurações
+
+### **Jest Configuration**
+- **Test Environment**: Node.js
+- **Test Pattern**: `**/src/tests/**/*.test.js`
+- **Setup File**: `jest.setup.js`
+- **Reporters**: Default + HTML Reporter
+
+### **HTML Reporter**
+- **Output**: `reports/report.html`
+- **Include**: Console logs, failure messages, stack traces
+- **Expand**: All test details
+
+## 🎯 Características dos Testes
+
+### **Padrão Triple A**
+- **Arrange**: Preparação dos dados e configurações
+- **Act**: Execução da ação/requisição
+- **Assert**: Validação dos resultados
+
+### **Tipos de Testes**
+- ✅ **Testes de Sucesso**: Validação de cenários positivos
+- ❌ **Testes Negativos**: Validação de cenários de erro
+- 📋 **Testes de Contrato**: Validação da estrutura das respostas
+
+### **Logs Padronizados**
+Todos os testes incluem logs detalhados no terminal:
+- 📤 **REQUEST**: Método, URL, headers e body
+- 📥 **RESPONSE**: Status, headers e body
+- 🔐 **AUTH**: Tentativas de login e obtenção de token
+
+## 🔐 Autenticação
+
+Alguns endpoints requerem autenticação via Bearer Token:
+- **Credenciais utilizadas**:
+  - `fulano@qa.com` / `teste`
+  - `beltrano@qa.com.br` / `teste`
+- **Token expira em**: 600 segundos (10 minutos)
+- **Função automática**: `getAuthToken()` tenta múltiplas credenciais
 
 ## 📊 Relatórios
 
-Os relatórios são gerados na pasta `./reports` após a execução dos testes.
+### **HTML Report**
+- **Localização**: `reports/report.html`
+- **Conteúdo**: 
+  - Resumo de execução
+  - Detalhes de cada teste
+  - Logs de console
+  - Stack traces de falhas
+  - Tempo de execução
+
+### **Terminal Output**
+- Status de cada teste
+- Logs de request/response
+- Tempo total de execução
+- Contagem de testes passados/falhados
+
+## 🚀 CI/CD
+
+O projeto inclui pipeline GitHub Actions configurado para:
+- Executar testes automaticamente em cada PR
+- Validar qualidade do código
+- Gerar relatórios de execução
 
 ## 🤝 Contribuição
 
-1. Fork o projeto
-2. Crie uma branch para sua feature
-3. Commit suas mudanças
-4. Push para a branch
+1. Faça um fork do projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. Push para a branch (`git push origin feature/AmazingFeature`)
 5. Abra um Pull Request
 
-## 📄 Licença
 
-Este projeto está sob a licença ISC.
 
-## 🔗 Links Úteis
+## 👨‍💻 Autor
 
-- [ServeRest](https://serverest.dev)
-- [PactumJS Documentation](https://pactumjs.github.io/)
-- [Jest Documentation](https://jestjs.io/)
+Desenvolvido como parte do desafio técnico de automação de testes de API.
+
+---
+
+**🎯 Objetivo**: Demonstrar conhecimento em automação de testes de API, boas práticas de desenvolvimento e organização de código.

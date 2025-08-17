@@ -82,6 +82,16 @@ describe('Testes de Alteração de Usuário por ID - ServeRest API', () => {
       administrador: 'true'
     };
 
+    console.log('📤 REQUEST:', {
+      method: 'PUT',
+      url: `https://serverest.dev/usuarios/${userId}`,
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: updateData
+    });
+
     console.log('🔄 Alterando usuário específico com ID:', userId);
 
     // ACT - Altera o usuário
@@ -94,7 +104,11 @@ describe('Testes de Alteração de Usuário por ID - ServeRest API', () => {
       .withJson(updateData)
       .expectStatus(200);
 
-    console.log('📥 Resposta:', response.body);
+    console.log('📥 RESPONSE:', {
+      status: response.statusCode,
+      headers: response.headers,
+      body: response.body
+    });
 
     // ASSERT - Valida a resposta
     expect(response.body).toHaveProperty('message', 'Registro alterado com sucesso');
