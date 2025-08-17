@@ -12,6 +12,7 @@
     "test:user-creation": "jest src/tests/suites/userCreation/userCreation.test.js",
     "test:user-search": "jest src/tests/suites/userSearchById/userSearch.test.js",
     "test:user-delete": "jest src/tests/suites/userSearchById/userDelete.test.js",
+    "test:user-update": "jest src/tests/suites/userSearchById/userUpdate.test.js",
     "test:user-search:logs": "jest src/tests/suites/userSearchById/userSearch.test.js --verbose > logs/user-search.log 2>&1",
     "test:parallel": "jest --maxWorkers=4",
     "test:coverage": "jest --coverage",
@@ -41,9 +42,7 @@
   },
   "devDependencies": {
     "jest": "^29.7.0",
-    "jest-html-reporters": "^3.1.7",
-    "allure-commandline": "^2.24.1",
-    "allure-jest": "^2.0.0"
+    "jest-html-reporters": "^3.1.7"
   },
   "engines": {
     "node": ">=16.0.0"
