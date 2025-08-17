@@ -88,10 +88,18 @@ describe('Testes de Exclusão de Usuário por ID - ServeRest API', () => {
     // ARRANGE - ID inválido
     const invalidUserId = 'ID_INVALIDO_123';
 
+    console.log('📤 REQUEST:', {
+      method: 'DELETE',
+      url: `https://serverest.dev/usuarios/${invalidUserId}`,
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+
     console.log('❌ Tentando excluir usuário com ID inválido:', invalidUserId);
 
     // ACT & ASSERT - Deve retornar 200 com mensagem específica
-    await spec()
+    const response = await spec()
       .delete(`https://serverest.dev/usuarios/${invalidUserId}`)
       .withHeaders({
         'Accept': 'application/json'
@@ -100,6 +108,12 @@ describe('Testes de Exclusão de Usuário por ID - ServeRest API', () => {
       .expectJson({
         message: 'Nenhum registro excluído'
       });
+
+    console.log('📥 RESPONSE:', {
+      status: response.statusCode,
+      headers: response.headers,
+      body: response.body
+    });
   });
 
   test('Deve retornar mensagem quando tentar excluir usuário já excluído', async () => {

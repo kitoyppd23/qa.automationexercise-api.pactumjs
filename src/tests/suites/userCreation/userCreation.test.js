@@ -68,6 +68,16 @@ describe('Testes de Criação de Usuários - ServeRest API', () => {
       administrador: 'false'
     };
 
+    console.log('📤 REQUEST:', {
+      method: 'POST',
+      url: 'https://serverest.dev/usuarios',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: userData
+    });
+
     // ACT - Executa a criação
     const response = await spec()
       .post('https://serverest.dev/usuarios')
@@ -77,6 +87,12 @@ describe('Testes de Criação de Usuários - ServeRest API', () => {
       })
       .withJson(userData)
       .expectStatus(201);
+
+    console.log('📥 RESPONSE:', {
+      status: response.statusCode,
+      headers: response.headers,
+      body: response.body
+    });
 
     // ASSERT - Valida contrato
     expect(response.body).toMatchObject({
@@ -129,8 +145,18 @@ describe('Testes de Criação de Usuários - ServeRest API', () => {
       administrador: 'false'
     };
 
+    console.log('📤 REQUEST:', {
+      method: 'POST',
+      url: 'https://serverest.dev/usuarios',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: userData
+    });
+
     // ACT & ASSERT - Executa e valida falha
-    await spec()
+    const response = await spec()
       .post('https://serverest.dev/usuarios')
       .withHeaders({
         'Content-Type': 'application/json',
@@ -141,6 +167,12 @@ describe('Testes de Criação de Usuários - ServeRest API', () => {
       .expectJson({
         message: 'Este email já está sendo usado'
       });
+
+    console.log('📥 RESPONSE:', {
+      status: response.statusCode,
+      headers: response.headers,
+      body: response.body
+    });
   });
 
   test('Deve falhar ao tentar criar usuário sem nome', async () => {

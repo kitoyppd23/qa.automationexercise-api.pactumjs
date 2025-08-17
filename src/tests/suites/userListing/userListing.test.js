@@ -13,6 +13,14 @@ describe('Testes de Listagem de Usuários - ServeRest API', () => {
 
   test('Deve listar todos os usuários com sucesso', async () => {
     // ARRANGE - Preparação (não necessária para este teste)
+
+    console.log('📤 REQUEST:', {
+      method: 'GET',
+      url: 'https://serverest.dev/usuarios',
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
     
     // ACT - Executa a busca de usuários
     const response = await spec()
@@ -21,6 +29,15 @@ describe('Testes de Listagem de Usuários - ServeRest API', () => {
         'Accept': 'application/json'
       })
       .expectStatus(200);
+
+    console.log('📥 RESPONSE:', {
+      status: response.statusCode,
+      headers: response.headers,
+      body: {
+        quantidade: response.body.quantidade,
+        usuarios: `${response.body.usuarios.length} usuários retornados`
+      }
+    });
 
     // ASSERT - Valida a resposta
     expect(response.body).toHaveProperty('quantidade');

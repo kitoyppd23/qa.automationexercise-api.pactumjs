@@ -26,6 +26,16 @@ describe('Testes de Login - ServeRest API', () => {
 
     // Tenta cada credencial até encontrar uma que funcione
     for (const cred of credentials) {
+      console.log('📤 REQUEST:', {
+        method: 'POST',
+        url: 'https://serverest.dev/login',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: cred
+      });
+
       try {
         const response = await spec()
           .post('https://serverest.dev/login')
@@ -36,9 +46,22 @@ describe('Testes de Login - ServeRest API', () => {
           .withJson(cred)
           .expectStatus(200);
 
+        console.log('📥 RESPONSE:', {
+          status: response.statusCode,
+          headers: response.headers,
+          body: {
+            message: response.body.message,
+            authorization: response.body.authorization ? 'Bearer token presente' : 'Sem token'
+          }
+        });
+
         successResponse = response;
         break; // Sai do loop se encontrou uma credencial válida
       } catch (error) {
+        console.log('❌ FALHA:', {
+          email: cred.email,
+          status: error.message.includes('401') ? '401 - Token expirado' : 'Erro desconhecido'
+        });
         // Continua para a próxima credencial
       }
     }
