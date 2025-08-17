@@ -7,11 +7,15 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:verbose": "jest --verbose",
-    "test:login": "jest src/tests/login.test.js",
-    "test:user": "jest src/tests/user.test.js",
+    "test:login": "jest src/tests/suites/login/login.test.js",
+    "test:user": "jest src/tests/suites/userListing/userListing.test.js",
+    "test:user-creation": "jest src/tests/suites/userCreation/userCreation.test.js",
+    "test:user-search": "jest src/tests/suites/userSearchById/userSearch.test.js",
+    "test:user-delete": "jest src/tests/suites/userSearchById/userDelete.test.js",
+    "test:user-search:logs": "jest src/tests/suites/userSearchById/userSearch.test.js --verbose > logs/user-search.log 2>&1",
     "test:parallel": "jest --maxWorkers=4",
     "test:coverage": "jest --coverage",
-    "report": "jest --reporters=default --reporters=jest-html-reporters",
+    "report": "jest --reporters=default --reporters=jest-html-reporters --testMatch='**/src/tests/**/*.test.js'",
     "validate": "npm run test"
   },
   "repository": {
@@ -37,7 +41,9 @@
   },
   "devDependencies": {
     "jest": "^29.7.0",
-    "jest-html-reporters": "^3.1.7"
+    "jest-html-reporters": "^3.1.7",
+    "allure-commandline": "^2.24.1",
+    "allure-jest": "^2.0.0"
   },
   "engines": {
     "node": ">=16.0.0"
@@ -59,7 +65,11 @@
         {
           "publicPath": "./reports",
           "filename": "report.html",
-          "expand": true
+          "expand": true,
+          "pageTitle": "ServeRest API Test Report",
+          "includeConsoleLog": true,
+          "includeFailureMsg": true,
+          "includeStackTrace": true
         }
       ]
     ]

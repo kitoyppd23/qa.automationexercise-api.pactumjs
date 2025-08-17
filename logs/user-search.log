@@ -1,0 +1,49 @@
+  console.log
+    🚀 Iniciando testes de API com PactumJS...
+
+      at Object.log (jest.setup.js:11:11)
+
+  console.log
+    🔍 Buscando usuário com ID: ReIimkwemsRyoaqu
+
+      at Object.log (src/tests/suites/userSearchById/user.test.js:28:13)
+
+  console.log
+    📋 Dados armazenados: {
+      nome: 'Ernesto Powlowski',
+      email: 'taryn.hilpert59@gmail.com',
+      administrador: 'true',
+      _id: 'ReIimkwemsRyoaqu'
+    }
+
+      at Object.log (src/tests/suites/userSearchById/user.test.js:29:13)
+
+  console.log
+    📥 Dados retornados: {
+      nome: 'Ernesto Powlowski',
+      email: 'taryn.hilpert59@gmail.com',
+      administrador: 'true',
+      _id: 'ReIimkwemsRyoaqu'
+    }
+
+      at Object.log (src/tests/suites/userSearchById/user.test.js:44:13)
+
+  console.log
+    ✅ Testes de API concluídos!
+
+      at Object.log (jest.setup.js:15:11)
+
+PASS src/tests/suites/userSearchById/user.test.js
+  Testes de Busca de Usuário por ID - ServeRest API
+    √ Deve buscar usuário por ID usando dados da listagem (1545 ms)
+    √ Deve buscar usuário por ID específico (178 ms)
+    √ Deve falhar ao buscar usuário com ID inválido (178 ms)
+    √ Deve validar contrato da resposta de busca por ID (418 ms)
+    √ Deve validar estrutura completa de usuário retornado por ID (441 ms)
+
+📦 report is created on: C:\Docs\Projetos\qa.automationexercise-api.pactumjs\reports\report.html
+Test Suites: 1 passed, 1 total
+Tests:       5 passed, 5 total
+Snapshots:   0 total
+Time:        3.003 s
+Ran all test suites matching /src\\tests\\suites\\userSearchById\\user.test.js/i.
