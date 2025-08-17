@@ -12,10 +12,7 @@
     "test:parallel": "jest --maxWorkers=4",
     "test:coverage": "jest --coverage",
     "report": "jest --reporters=default --reporters=jest-html-reporters",
-    "lint": "eslint src/",
-    "lint:fix": "eslint src/ --fix",
-    "format": "prettier --write src/",
-    "validate": "npm run lint && npm run test"
+    "validate": "npm run test"
   },
   "repository": {
     "type": "git",
@@ -40,11 +37,7 @@
   },
   "devDependencies": {
     "jest": "^29.7.0",
-    "jest-html-reporters": "^3.1.7",
-    "eslint": "^8.55.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-prettier": "^5.0.1",
-    "prettier": "^3.1.1"
+    "jest-html-reporters": "^3.1.7"
   },
   "engines": {
     "node": ">=16.0.0"
