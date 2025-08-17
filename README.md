@@ -1,4 +1,4 @@
-# Automação de Testes de API - ServeRest com PactumJS
+# Automação de Testes de API -  PactumJS
 
 ## 📋 Descrição
 
