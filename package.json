@@ -1,12 +1,16 @@
 {
   "name": "qa.automationexercise-api.pactumjs",
   "version": "1.0.0",
-  "description": "Automação de testes de API para ServeRest usando PactumJS",
+  "description": "Automação de testes de API para ServeRest usando PactumJS com Page Objects",
   "main": "index.js",
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
     "test:verbose": "jest --verbose",
+    "test:login": "jest src/tests/login.test.js",
+    "test:user": "jest src/tests/user.test.js",
+    "test:parallel": "jest --maxWorkers=4",
+    "test:coverage": "jest --coverage",
     "report": "jest --reporters=default --reporters=jest-html-reporters",
     "lint": "eslint src/",
     "lint:fix": "eslint src/ --fix",
@@ -21,6 +25,7 @@
     "api-testing",
     "automation",
     "pactumjs",
+    "page-objects",
     "quality-assurance",
     "serverest"
   ],

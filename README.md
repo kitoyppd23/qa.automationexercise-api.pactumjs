@@ -2,7 +2,7 @@
 
 ## 📋 Descrição
 
-Projeto de automação de testes de API para o **ServeRest** utilizando **PactumJS** com foco em **Contract Testing** e **Joi** para validação de schemas.
+Projeto de automação de testes de API para o **ServeRest** utilizando **PactumJS** com foco em **Contract Testing** e validação de schemas.
 
 ## 🏗️ Arquitetura
 
@@ -19,7 +19,7 @@ Projeto de automação de testes de API para o **ServeRest** utilizando **Pactum
 src/
 ├── config/           # Configurações e ambiente
 ├── models/           # Modelos de dados (Builders)
-├── schemas/          # Schemas Joi para validação
+├── schemas/          # Schemas para validação
 ├── services/         # Serviços de API (API Objects)
 ├── tests/            # Casos de teste organizados
 └── utils/            # Utilitários e helpers
@@ -30,7 +30,7 @@ src/
 ### ✅ Implementado
 
 - **Login com Sucesso**: Teste completo do endpoint `POST /login`
-- **Contract Testing**: Validação de schemas com Joi
+- **Contract Testing**: Validação de schemas
 - **Testes Negativos**: Cenários de erro e validação
 - **Performance Testing**: Validação de tempo de resposta
 - **Header Validation**: Validação de headers de request/response
@@ -40,8 +40,7 @@ src/
 ## 🛠️ Tecnologias
 
 - **PactumJS**: Framework de testes de API
-- **Joi**: Validação de schemas
-- **Faker**: Geração de dados de teste
+- **Jest**: Test runner e assertions
 - **ESLint**: Linting de código
 - **Prettier**: Formatação de código
 
@@ -131,6 +130,7 @@ RETRY_ATTEMPTS=3
 PARALLEL_EXECUTION=false
 REPORT_PATH=./reports
 LOG_LEVEL=info
+NODE_ENV=test
 MAX_RESPONSE_TIME=5000
 PERFORMANCE_THRESHOLD=3000
 ```
@@ -155,4 +155,4 @@ Este projeto está sob a licença ISC.
 
 - [ServeRest](https://serverest.dev)
 - [PactumJS Documentation](https://pactumjs.github.io/)
-- [Joi Documentation](https://joi.dev/)
+- [Jest Documentation](https://jestjs.io/)
