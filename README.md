@@ -104,19 +104,7 @@ npm run report
 
 O relatório será gerado em: `reports/report.html`
 
-### ⚡ **Executar em Paralelo**
-```bash
-npm run test:parallel
-```
 
-### 👀 **Executar em Modo Watch**
-```bash
-npm run test:watch
-```
-
-### 📝 **Executar com Logs Verbosos**
-```bash
-npm run test:verbose
 ```
 
 ## 📁 Estrutura do Projeto
@@ -200,11 +188,6 @@ Alguns endpoints requerem autenticação via Bearer Token:
   - Stack traces de falhas
   - Tempo de execução
 
-### **Terminal Output**
-- Status de cada teste
-- Logs de request/response
-- Tempo total de execução
-- Contagem de testes passados/falhados
 
 ## 🚀 CI/CD
 
